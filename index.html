@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cancer Awareness & Support</title>
+  <meta name="description" content="A simple, responsive, interactive landing page for Cancer Awareness & Support." />
+  <style>
+    :root{
+      --accent:#c62828;
+      --muted:#37474f;
+      --bg:#f7f9fb;
+      --card:#ffffff;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:var(--muted);}
+    header{background:linear-gradient(90deg, rgba(198,40,40,0.9), rgba(244,67,54,0.9));color:white;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    header .brand{display:flex;align-items:center;gap:.75rem;font-weight:700}
+    header img.logo{width:42px;height:42px;border-radius:8px;object-fit:cover}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-left:1rem;font-weight:600}
+    .container{max-width:1100px;margin:2rem auto;padding:0 1rem}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:1.5rem;align-items:center}
+    .banner{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+    .banner img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-card{background:var(--card);padding:2rem;border-radius:12px;box-shadow:0 6px 16px rgba(2,6,23,0.06)}
+    h1{margin:0 0 .5rem 0;font-size:clamp(1.5rem,2.8vw,2.4rem);color:#111}
+    p.lead{margin:0 0 1rem 0;color:#4b5563}
+    .cta-row{display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{background:var(--accent);color:white;padding:.7rem 1rem;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .btn.secondary{background:transparent;color:var(--accent);border:2px solid rgba(198,40,40,0.12)}
+    .stats{display:flex;gap:1rem;margin-top:1rem}
+    .stat{background:linear-gradient(180deg, rgba(198,40,40,0.06), rgba(198,40,40,0.02));padding:.6rem .8rem;border-radius:10px;text-align:center}
+    .columns{display:grid;grid-template-columns:1fr 380px;gap:1.25rem;margin-top:1.5rem}
+    /* Contact form */
+    form.card{display:flex;flex-direction:column;gap:.6rem;padding:1rem;border-radius:12px;background:var(--card);box-shadow:0 6px 16px rgba(2,6,23,0.06)}
+    label{font-size:.85rem;color:#334155}
+    input,textarea{padding:.6rem .7rem;border-radius:8px;border:1px solid #e6edf3;font-size:1rem}
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:.85rem;color:#6b7280}
+    footer{margin-top:2rem;padding:1.25rem 0;color:#6b7280;text-align:center}
+    /* responsive */
+    @media (max-width:920px){
+      .hero{grid-template-columns:1fr;}
+      .columns{grid-template-columns:1fr}
+    }
+    /* tiny animations */
+    .fade-in{animation:fadeIn .7s ease both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    /* messages list toggle */
+    .messages{max-height:180px;overflow:auto;padding:.6rem;border-radius:8px;border:1px dashed #e8eef4;background:#fcfcfd}
+    .message-item{padding:.5rem;border-bottom:1px solid #eef4f8}
+    .message-item:last-child{border-bottom:none}
+    /* utility */
+    .muted{color:#64748b}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><img class="logo" src="https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="ribbon" />
+      <div>
+        <div style="font-size:0.95rem">Cancer Awareness & Support</div>
+        <div style="font-size:0.75rem;opacity:.9">Community - Information - Hope</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card fade-in">
+        <h1>Awareness saves lives — Support makes the journey lighter</h1>
+        <p class="lead">We provide reliable information, community support, and active resources to patients and families affected by cancer. Learn symptoms, prevention, and where to find help.</p>
+
+        <div class="cta-row">
+          <button class="btn" id="supportBtn">Get Support</button>
+          <button class="btn secondary" id="learnBtn">Learn More</button>
+        </div>
+
+        <div class="stats" aria-hidden="true">
+          <div class="stat"><div style="font-weight:800">24/7</div><div class="small">Support hotline</div></div>
+          <div class="stat"><div style="font-weight:800">120+</div><div class="small">Local groups</div></div>
+          <div class="stat"><div style="font-weight:800">Resources</div><div class="small">Articles & guides</div></div>
+        </div>
+
+        <div class="columns">
+          <div>
+            <h3 style="margin-top:1rem">About our mission</h3>
+            <p class="small">We focus on early detection, accessible care, and community-driven emotional support. Volunteers, survivors, and medical professionals contribute to verified guides and local meetups.</p>
+
+            <h4 style="margin-top:1rem">Quick resources</h4>
+            <ul class="small">
+              <li>Understanding symptoms & screening</li>
+              <li>Nutrition & exercise during treatment</li>
+              <li>Mental health & support groups</li>
+            </ul>
+          </div>
+
+          <aside id="contactBox">
+            <h4>Recent messages</h4>
+            <div class="messages" id="messagesList">
+              <div class="muted" style="padding:.5rem">No messages yet — be the first to reach out.</div>
+            </div>
+            <div style="font-size:.8rem;margin-top:.6rem;color:#64748b">Messages are stored locally in your browser for demo only.</div>
+          </aside>
+        </div>
+      </div>
+
+      <figure class="banner fade-in" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1582719478171-2c5f83d1ef2a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Hands together support"/>
+      </figure>
+    </section>
+
+    <section id="resources" style="margin-top:1.5rem">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between">
+        <h2 style="margin:0">Resources & Guides</h2>
+        <div class="small">Trusted articles, FAQs and community help</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem">
+        <article style="background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 6px 16px rgba(2,6,23,0.04)">
+          <h3 style="margin:0 0 .4rem 0">Early detection</h3>
+          <p class="small">Learn about common screening tests, warning signs, and when to consult a clinician.</p>
+        </article>
+        <article style="background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 6px 16px rgba(2,6,23,0.04)">
+          <h3 style="margin:0 0 .4rem 0">Nutrition & care</h3>
+          <p class="small">Dietary suggestions and ways to manage symptoms during treatment.</p>
+        </article>
+        <article style="background:var(--card);padding:1rem;border-radius:10px;box-shadow:0 6px 16px rgba(2,6,23,0.04)">
+          <h3 style="margin:0 0 .4rem 0">Support groups</h3>
+          <p class="small">Find local and online groups for emotional and practical support.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:1.5rem">
+      <h2>Contact us</h2>
+      <p class="small">Use the form below to send a message. For emergencies, please call local services.</p>
+
+      <form class="card" id="contactForm" onsubmit="return false">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+        </div>
+        <div style="display:flex;gap:.5rem;align-items:center">
+          <button class="btn" id="submitBtn" type="submit">Send Message</button>
+          <button class="btn secondary" id="clearBtn" type="button">Clear Saved</button>
+          <div style="margin-left:auto;font-size:.85rem;color:#64748b">Privacy: saved locally only</div>
+        </div>
+      </form>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Cancer Awareness & Support • Built for demo.
+    </footer>
+  </main>
+
+  <script>
+    // tiny client-side JS: validation, localStorage, interactions
+    const yearEl = document.getElementById('year'); yearEl.textContent = new Date().getFullYear();
+    const supportBtn = document.getElementById('supportBtn');
+    const learnBtn = document.getElementById('learnBtn');
+    const messagesList = document.getElementById('messagesList');
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const STORAGE_KEY = 'cas_messages_v1';
+
+    function loadMessages(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return [];
+      try{ return JSON.parse(raw) }catch(e){return []}
+    }
+
+    function saveMessages(arr){ localStorage.setItem(STORAGE_KEY,JSON.stringify(arr)); }
+
+    function renderMessages(){
+      const msgs = loadMessages();
+      if(msgs.length===0){ messagesList.innerHTML = '<div class="muted" style="padding:.5rem">No messages yet — be the first to reach out.</div>'; return }
+      messagesList.innerHTML = msgs.map(m=>`<div class="message-item"><strong>${escapeHtml(m.name)}</strong> <span style="font-size:.85rem;color:#94a3b8">(${escapeHtml(m.email)})</span><div class="small" style="margin-top:.3rem">${escapeHtml(m.message)}</div></div>`).join('');
+    }
+
+    function escapeHtml(s){ return (s+'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;') }
+
+    // load on start
+    renderMessages();
+
+    supportBtn.addEventListener('click',()=>{
+      // focus social support: scroll to contact and highlight
+      document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
+      const el = document.getElementById('contactForm'); el.style.transition='box-shadow .35s'; el.style.boxShadow='0 12px 40px rgba(198,40,40,0.12)';
+      setTimeout(()=>el.style.boxShadow='none',1200);
+    });
+
+    learnBtn.addEventListener('click',()=>{ document.getElementById('resources').scrollIntoView({behavior:'smooth'}) });
+
+    contactForm.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      submitBtn.disabled = true; submitBtn.textContent = 'Sending...';
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      // basic validation
+      if(name.length < 2){ alert('Please enter your name.'); submitBtn.disabled=false; submitBtn.textContent='Send Message'; return }
+      if(!/^\S+@\S+\.\S+$/.test(email)){ alert('Please enter a valid email.'); submitBtn.disabled=false; submitBtn.textContent='Send Message'; return }
+      if(message.length < 5){ alert('Please type a longer message.'); submitBtn.disabled=false; submitBtn.textContent='Send Message'; return }
+
+      const msgs = loadMessages();
+      msgs.unshift({name,email,message,ts:Date.now()});
+      saveMessages(msgs.slice(0,50)); // keep last 50
+      renderMessages();
+
+      // friendly UI feedback
+      submitBtn.textContent = 'Sent ✓';
+      setTimeout(()=>{ submitBtn.disabled=false; submitBtn.textContent='Send Message'; contactForm.reset() },900);
+    });
+
+    clearBtn.addEventListener('click',()=>{
+      if(!confirm('Clear saved messages from this browser?')) return;
+      localStorage.removeItem(STORAGE_KEY); renderMessages();
+    });
+
+    // small accessibility: keyboard shortcut 'M' opens contact
+    document.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='m' && !e.metaKey && !e.ctrlKey){ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); }});
+
+    // friendly note if localStorage unavailable
+    try{ localStorage.setItem('__test__','1'); localStorage.removeItem('__test__') }catch(e){
+      document.getElementById('contactBox').innerHTML = '<div style="color:#b91c1c">Local storage is disabled — messages will not persist.</div>';
+    }
+  </script>
+</body>
+</html>
